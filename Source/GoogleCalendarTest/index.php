@@ -45,11 +45,14 @@ if (isset($_SESSION['token'])) {
     $service = new Google_Service_Calendar($client);
 
     $calendarList = $service->calendarList->listCalendarList();
+    //$eventList = $service->events->listEvents('zulkhair.abdulah.tifd13@polban.ac.id');
     
     print_r($calendarList);
+    //print_r($eventList);
+   // exit();
     while (true) {
         foreach ($calendarList->getItems() as $calendarListEntry) {
-            echo $calendarListEntry->getSummary() . "<br>\n";
+            echo $calendarListEntry->getSummary(). "<br>\n";
         }
         $pageToken = $calendarList->getNextPageToken();
         if ($pageToken) {
